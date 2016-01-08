@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "Players";
+}
+
+<h2>Players</h2>
+
+<div>
+    Search: <input type="text" data-bind="value: query" class="form-control" />
+</div>
+<br />
+
+<div id="loading" style="text-align: center"><img src="http://thecodeplayer.com/uploads/wt/13.png" /></div>
+
+<table id="players" data-bind="visible: Players().length > 0" data-url="@Url.Action("GetAllPlayers")" style="max-width:100%" class="table table-striped table-bordered">
+
+    <thead>
+        <tr>
+            <th>UID</th>
+            <th>Name</th>
+            <th>Player ID</th>
+            <th>Cash</th>
+            <th>Bank Account</th>
+            <th>Aliases</th>
+            <th>Cop Level</th>
+            <th>Medic Level</th>
+            <th>Admin Level</th>
+            <th>Donator Level</th>
+            <th>Controls</th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: currentPage">
+        <tr>
+            <td data-bind="text: uid" style="width: 3%"></td>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: playerid"></td>
+            <td data-bind="text: cash"></td>
+            <td data-bind="text: bankacc"></td>
+            <td data-bind="text: aliases"></td>
+            <td data-bind="text: coplevel" style="width: 3%"></td>
+            <td data-bind="text: mediclevel" style="width: 3%"></td>
+            <td data-bind="text: adminlevel" style="width: 3%"></td>
+            <td data-bind="text: donatorlvl" style="width: 3%"></td>
+            <td style="margin:0; text-align: center">
+                <button type="button" data-toggle="modal" data-target="#compensationModal" data-bind="click: setSelectedPlayer" class="btn btn-sm">Compensate</button>
+                <button type="button" data-toggle="modal" data-target="#levelsModal" data-bind="click: setSelectedPlayer" class="btn btn-sm">Set Levels</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<ul class="pager">
+    <li><a href="#" data-bind="click: previousPage" class="glyphicon glyphicon-arrow-left"></a></li>
+    <li><span data-bind="text: $root.currentPageIndex"></span></li>
+    <li><a href="#" data-bind="click: nextPage" class="glyphicon glyphicon-arrow-right"></a></li>
+</ul>
+
+<div id="compensationModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Compensation</h4>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tbody>
+                        <tr><td><span class="col-xs-7 ">Amount to Compensate:</span> <input class="col-xs-5" type="text" data-bind="value: compensationLog().reimburse_amount" /></td></tr>
+                        <tr><td><hr /></td></tr>
+                        <tr><td><span class="col-xs-7">Justification: </span><input class="col-xs-5" type="text" data-bind="value: compensationLog().reimburse_justification" /></td></tr>
+                        <tr><td><span class="col-xs-7">Admin:</span> <input type="text" class="col-xs-5" data-bind="value: compensationLog().reimburse_admin" /></td></tr>
+                        <tr><td><br /></td></tr>
+                        <tr><td><button data-dismiss="modal" data-bind="click: addCompensation">Finish</button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="levelsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Set Player Levels</h4>
+            </div>
+            <div class="modal-body">
+                <!--ko if:selectedPlayer-->
+                <table class="table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>
+                                Select Cop Level: <select data-bind="value: selectedPlayer().coplevel">
+                                    <option value="0">0 - Pub Cop</option>
+                                    <option value="1">1 - Cadet</option>
+                                    <option value="2">2 - Recruit</option>
+                                    <option value="3">3 - Deputy</option>
+                                    <option value="4">4 - Corporal</option>
+                                    <option value="5">5 - Supvervisor</option>
+                                    <option value="6">6 - Major</option>
+                                    <option value="7">7 - Chief</option>
+                                </select>                               
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+
+                            <td>
+                                Select Medic Level: <select data-bind="value: selectedPlayer().mediclevel">
+                                    <option value="0">0 - No Medic</option>
+                                    <option value="5">5 - Medic</option>
+                                </select>
+                                <br />
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td>
+                                Select Admin Level: <select data-bind="value: selectedPlayer().adminlevel">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <br />
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td>
+                                Select Donator Level:
+                                <select data-bind="value: selectedPlayer().donatorlvl">
+                                    <option value="0">0 - No Donator</option>
+                                    <option value="1">1 - Level 1 Donator</option>
+                                    <option value="2">2 - Level 2 Donator</option>
+                                    <option value="3">3 - Level 3 Donator</option>
+                                    <option value="4">4 - Level 4 Donator</option>
+                                    <option value="5">5 - Level 5 Donator</option>
+                                </select>                               
+                            </td>
+                        </tr>
+                        <tr><td><button data-dismiss="modal" data-bind="click: updatePlayerLevels">Finish</button></td></tr>
+                    </tbody>
+                </table>
+                <!--/ko-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/ViewScripts/Players/index.js"></script>
+}
