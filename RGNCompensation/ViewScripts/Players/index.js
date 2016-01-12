@@ -52,7 +52,7 @@
         return {
             reimburse_id: ko.observable(""),
             reimburse_amount: ko.observable(""),
-            reimburse_player_id: ko.observable(self.selectedPlayer().playerid()),
+            reimburse_player_id: ko.observable(selectedPlayer().playerid()),
             reimburse_justification: ko.observable(""),
             reimburse_admin: ko.observable("")
         }
@@ -109,7 +109,6 @@
 
        
         selectedPlayer().bankacc(selectedPlayer().bankacc() + + self.compensationLog().reimburse_amount());        
-        
         
         var data = ko.toJS(compensationLog)
         var data2 = ko.toJS(selectedPlayer)

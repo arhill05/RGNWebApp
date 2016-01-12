@@ -26,5 +26,7 @@ namespace RGNCompensation.Controllers
 
             return View();
         }
+
+       
     }
 }

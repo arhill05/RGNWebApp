@@ -72,20 +72,24 @@
                 <h4 class="modal-title">Compensation</h4>
             </div>
             <div class="modal-body">
+                <!--ko if:selectedPlayer-->
                 <table>
                     <tbody>
                         <tr><td><span class="col-xs-7 ">Amount to Compensate:</span> <input class="col-xs-5" type="text" data-bind="value: compensationLog().reimburse_amount" /></td></tr>
                         <tr><td><hr /></td></tr>
                         <tr><td><span class="col-xs-7">Justification: </span><input class="col-xs-5" type="text" data-bind="value: compensationLog().reimburse_justification" /></td></tr>
                         <tr><td><span class="col-xs-7">Admin:</span> <input type="text" class="col-xs-5" data-bind="value: compensationLog().reimburse_admin" /></td></tr>
+                        <tr><td>Type the Player ID here:<input data-bind="value: compensationLog().reimburse_player_id"</td></tr>
                         <tr><td><br /></td></tr>
                         <tr><td><button data-dismiss="modal" data-bind="click: addCompensation">Finish</button></td></tr>
                     </tbody>
                 </table>
+                <!--/ko-->
             </div>
         </div>
     </div>
 </div>
+
 
 <div id="levelsModal" class="modal fade" role="dialog">
     <div class="modal-dialog">

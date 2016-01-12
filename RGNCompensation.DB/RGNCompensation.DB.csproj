@@ -152,8 +152,10 @@
   <ItemGroup>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Mapping\CompensationLogMap.cs" />
+    <Compile Include="Models\Mapping\UserMap.cs" />
     <Compile Include="Models\Mapping\PlayerMap.cs" />
     <Compile Include="Models\PlayerDatabaseContext.cs" />
+    <Compile Include="Models\UserDatabaseContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

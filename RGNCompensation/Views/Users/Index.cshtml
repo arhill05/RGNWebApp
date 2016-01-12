@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table id="users" class="table-bordered" data-bind="visible: Users().length  > 0" data-url="@Url.Action("GetAllUsers")">
+    <thead>
+        <tr>
+            <th>UserName</th>
+            <th>ID</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: Users()">
+        <tr>
+            <td data-bind="text: UserName"></td>
+            <td data-bind="text: Id"></td>
+        </tr>
+    </tbody>
+</table>
+
+
+@section scripts{
+    <script src="~/ViewScripts/Users/index.js"></script>
+}
+

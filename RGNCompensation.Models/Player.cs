@@ -10,7 +10,7 @@ namespace RGNCompensation.Models
     {
         public int uid { get; set; }
         public string name { get; set; }
-        public string playerid { get; set; }
+        public double playerid { get; set; }
         public int cash { get; set; }
         public int bankacc { get; set; }
         public string coplevel { get; set; }

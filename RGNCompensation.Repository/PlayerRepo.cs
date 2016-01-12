@@ -16,6 +16,7 @@ namespace RGNCompensation.Repository
             return dbContext.Players;
         }
 
+
         public Player Update(Player item)
         {
             dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;

@@ -29,6 +29,7 @@
                     @if (ViewContext.HttpContext.User.IsInRole("admin"))
                     {
                         <li>@Html.ActionLink("Players", "Index", "Players")</li>
+                        <li>@Html.ActionLink("Compensation Logs", "Index", "Compensation")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
