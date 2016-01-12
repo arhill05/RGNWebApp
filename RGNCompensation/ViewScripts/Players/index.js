@@ -24,7 +24,6 @@
     self.all = ko.observableArray();
 }
 
-
 (function () {
     var baseUri = "api/PlayersApi"
     var self = this;
@@ -33,9 +32,10 @@
     self.query = ko.observable("");
    
   
-   
     var queryResults = ko.observableArray();
-    self.filteredPlayers = ko.computed(function () {
+    self.filteredPlayers = ko.computed(function () {
+
+
         var filter = query().toLowerCase();
         if (!filter) {
             return self.Players();
@@ -45,6 +45,7 @@
                 return isFound(test, filter)
             });
         }
+
     }).extend({ rateLimit: 800 });
 
     self.newCompensationLog = function () {
@@ -64,8 +65,6 @@
         self.selectedPlayer(player);
         self.compensationLog(self.newCompensationLog());
     }
-    
-
 
     function isFound(data, filter) {
         return ((data !== null) && data.toString().toLowerCase().indexOf(filter) !== -1)
@@ -149,16 +148,11 @@
                 }
             },
             complete:  function(){
-            $('#loading').hide();
+            $('#floatingCirclesG').hide();
         }
         });
     }
     
-
     self.getData();
     ko.applyBindings(self);
 })();
-
-$(document).ajaxStart(function () {
-    alert("Ajax started");
-});

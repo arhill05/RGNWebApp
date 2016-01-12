@@ -28,14 +28,6 @@ namespace RGNCompensation
             bundles.Add(new ScriptBundle("~/bundles/toastr").Include(
                 "~/Scripts/toastr.min.js"));
 
-            //bundles.Add(new ScriptBundle("~/bundles/DataTables").Include(
-            //    "~/Scripts/DataTables/jquery.dataTables.js",
-            //    "~/Scripts/DataTables/responsive.bootstrap.js",
-            //    "~/Scripts/DataTables/dataTables.responsive.js",
-            //    "~/Scripts/DataTables/dataTables.bootstrap.js",
-            //    "~/Scripts/DataTables/jqueryui.js",
-            //    "~/Scripts/DataTables/responsive.foundation.js",
-            //    "~/Scripts/DataTables/responise.jqueryui.js"));
 
 
 
@@ -43,9 +35,6 @@ namespace RGNCompensation
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/toastr.min.css"));
-
-            bundles.Add(new StyleBundle("~/Content/DataTables").IncludeDirectory(
-                "~/Content/DataTables/css", "*.css", true));
 
         }
     }

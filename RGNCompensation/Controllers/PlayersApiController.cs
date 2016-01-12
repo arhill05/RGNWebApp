@@ -21,12 +21,7 @@ namespace RGNCompensation.Controllers
             return Ok(db.GetAllPlayers());
         }
 
-        public IHttpActionResult Post([FromBody] Player item)
-        {
-            db.Update(item);
-            db.SaveChanges();
-            return Ok();
-        }
+       
         // POST api/Players
         [HttpPost]
         public IHttpActionResult Post([FromBody] PlayerCompensation item)
@@ -34,9 +29,7 @@ namespace RGNCompensation.Controllers
             db.Update(item.Player, item.CompensationLog);
             db.SaveChanges();
             return Ok();            
-        }
-
-        // POST api/Players       
+        }    
 
         // PUT api/PlayersApi/5
         [HttpPut]

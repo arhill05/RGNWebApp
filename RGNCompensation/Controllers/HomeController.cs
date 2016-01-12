@@ -15,7 +15,7 @@ namespace RGNCompensation.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "This tool was developed for YOU!";
 
             return View();
         }
